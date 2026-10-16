@@ -88,4 +88,10 @@ public class Livro {
 
         return this.autor;
     }
+    public String exibirDetalhes() {
+        return "Título: " + this.getTitulo()
+                + "\nPáginas: " + this.getQuantidadeDePaginas()
+                + "\nGênero: " + this.getGeneroLiterario()
+                + "\nAutor: " + this.getAutor().getNome();
+    }
 }

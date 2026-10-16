@@ -1,104 +1,105 @@
 # FiapRideEstudos — Java POO
 
-Projeto desenvolvido durante os estudos de **Programação Orientada a Objetos (POO)** da FIAP.
+Projeto de estudos desenvolvido durante a graduação em Ciência da Computação na FIAP, com foco na prática de **Programação Orientada a Objetos (POO) em Java**.
 
-## Aula 2 — Métodos e Comportamentos
+O projeto evolui aula após aula, aplicando conceitos teóricos em classes, objetos, métodos, relacionamentos e regras de negócio.
 
-Nesta aula, a classe `Livro` foi evoluída para possuir comportamentos que permitem alterar seu estado de forma controlada.
+## Objetivos
 
-### Objeto `Livro`
+- Compreender os fundamentos de classes e objetos.
+- Aplicar encapsulamento para proteger os atributos.
+- Utilizar construtores para inicializar objetos.
+- Implementar métodos com regras de negócio e validações.
+- Trabalhar com herança e reutilização de código.
+- Aplicar polimorfismo por sobrescrita de métodos.
+- Praticar modelagem UML com diagramas de classes no Astah.
+- Desenvolver boas práticas de organização e legibilidade do código.
 
-O objeto `Livro` representa um livro no mundo real e possui as seguintes características:
+## Conceitos implementados
 
-* `titulo` — título do livro.
-* `quantidadeDePaginas` — quantidade de páginas.
-* `generoLiterario` — gênero literário.
+### 1. Classes e objetos
 
-### Métodos
+A classe `Livro` representa um livro e reúne informações como título, quantidade de páginas, gênero literário e autor.
 
-Foram adicionados dois métodos à classe:
+No `SistemaPrincipal`, são criados objetos de diferentes tipos para demonstrar o funcionamento das classes.
 
-#### `adicionarPaginas(int quantidade)`
+### 2. Métodos e regras de negócio
 
-Adiciona páginas ao livro.
+A classe `Livro` possui métodos que permitem alterar a quantidade de páginas:
 
-A quantidade informada deve ser maior que zero. Caso contrário, a operação é interrompida e uma mensagem de erro é exibida.
+- `adicionarPaginas(int quantidade)`: adiciona páginas quando a quantidade informada é válida.
+- `removerPaginas(int quantidade)`: remove páginas quando a quantidade é válida e o livro possui páginas suficientes.
 
-Exemplo:
+Esses métodos aplicam validações para impedir operações inválidas.
 
-```java
-livro1.adicionarPaginas(50);
-```
+### 3. Encapsulamento
 
-#### `removerPaginas(int quantidade)`
+Os atributos são declarados como `private`, restringindo o acesso direto a eles.
 
-Remove páginas do livro.
+Métodos de acesso, como getters, permitem consultar informações do objeto. Os setters são utilizados internamente quando necessário para definir ou atualizar valores.
 
-Existem duas regras:
+### 4. Construtores
 
-* A quantidade deve ser maior que zero.
-* Não é possível remover mais páginas do que o livro possui.
+Os construtores inicializam os objetos com as informações necessárias, utilizando `super(...)` nas classes filhas para inicializar a parte herdada de `Livro`.
 
-Exemplo:
+### 5. Herança
 
-```java
-livro1.removerPaginas(100);
-```
+O projeto utiliza `Livro` como classe mãe de duas classes especializadas:
 
-### Regras de negócio
+- `Ebook`: representa um livro digital e possui o atributo `tamanhoArquivoMB`.
+- `LivroFisico`: representa um livro físico e possui o atributo `pesoGramas`.
 
-Os métodos utilizam validações para impedir alterações inválidas no estado do objeto.
+As duas classes herdam os atributos e comportamentos comuns de `Livro`, além de manterem suas próprias características.
 
-Exemplos:
+### 6. Polimorfismo por sobrescrita
 
-```java
-livro1.adicionarPaginas(-20);
-```
+A classe `Livro` define o método:
 
-A operação é rejeitada porque a quantidade é inválida.
+`exibirDetalhes(): String`
 
-```java
-livro1.removerPaginas(500);
-```
+As classes `Ebook` e `LivroFisico` sobrescrevem esse método utilizando a anotação `@Override`.
 
-A operação é rejeitada caso o livro não possua páginas suficientes.
+A implementação de `Ebook` acrescenta o tamanho do arquivo, enquanto a de `LivroFisico` acrescenta o peso do livro. Ambas reutilizam os detalhes comuns por meio de `super.exibirDetalhes()`.
 
-### Exemplo de execução
-
-```java
-Livro livro1 = new Livro();
-
-livro1.titulo = "O Hobbit";
-livro1.quantidadeDePaginas = 310;
-livro1.generoLiterario = "Fantasia";
-
-livro1.adicionarPaginas(50);
-livro1.adicionarPaginas(-20);
-
-livro1.removerPaginas(100);
-livro1.removerPaginas(500);
-```
-
-Nesse exemplo, o objeto começa com 310 páginas. Após adicionar 50, passa a ter 360. A tentativa de adicionar `-20` é rejeitada. Depois, 100 páginas são removidas, resultando em 260 páginas. A tentativa de remover 500 páginas também é rejeitada.
-
-## Tecnologias
-
-* Java
-* Eclipse
-* Git e GitHub
+No `SistemaPrincipal`, os dois tipos de objeto são armazenados em uma `List<Livro>` e percorridos por um laço `for`. A chamada ao mesmo método executa a implementação correspondente ao objeto.
 
 ## Estrutura do projeto
 
 ```text
-FiapRideEstudos
-└── src
-    └── br.com.fiapride
-        ├── main
-        │   └── SistemaPrincipal.java
-        └── model
-            └── Livro.java
+FiapRideEstudos/
+└── src/
+    └── br/
+        └── com/
+            └── fiapride/
+                ├── main/
+                │   └── SistemaPrincipal.java
+                └── model/
+                    ├── Autor.java
+                    ├── Livro.java
+                    ├── Ebook.java
+                    └── LivroFisico.java
 ```
 
-## Objetivo da Aula
+## Tecnologias e ferramentas
 
-Aplicar o conceito de **métodos e comportamentos** em um objeto, permitindo que seus atributos sejam alterados por meio de ações com regras de negócio e validações.
+- **Java** — linguagem de programação.
+- **Eclipse IDE** — ambiente de desenvolvimento.
+- **Git e GitHub** — versionamento e armazenamento do código.
+- **Astah** — modelagem UML e diagramas de classes.
+
+## Como executar
+
+1. Abra o projeto no Eclipse.
+2. Localize a classe `SistemaPrincipal.java` no pacote `br.com.fiapride.main`.
+3. Execute o método `main`.
+4. Observe no console os detalhes dos objetos `Ebook` e `LivroFisico`, incluindo suas informações específicas.
+
+## Aprendizados
+
+Este projeto é desenvolvido de forma incremental para consolidar os fundamentos de POO, praticar a implementação de soluções em Java e manter o código alinhado à modelagem UML.
+
+Cada evolução busca reforçar a organização, a reutilização de código, a proteção do estado dos objetos e a aplicação dos conceitos estudados nas aulas.
+
+---
+
+Projeto pessoal de estudos — Ciência da Computação | FIAP.

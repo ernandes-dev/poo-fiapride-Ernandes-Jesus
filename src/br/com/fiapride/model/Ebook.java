@@ -18,6 +18,11 @@ public class Ebook extends Livro{
 			
 			this.tamanhoArquivoMB = tamanhoArquivoMB;
 		}
+		@Override
+		public String exibirDetalhes() {
+		    return super.exibirDetalhes()
+		            + "\nTamanho do arquivo: " + this.getTamanhoArquivoMB() + " MB";
+		}
 
 }
 

@@ -16,5 +16,9 @@ public class LivroFisico extends Livro{
 	private void setPesoGramas(double pesoGramas) {
 		this.pesoGramas = pesoGramas;
 	}
-
+	@Override
+	public String exibirDetalhes() {
+		return super.exibirDetalhes()
+            + "\nPeso do Livro: " + this.getPesoGramas() + " g";
+	}
 }
