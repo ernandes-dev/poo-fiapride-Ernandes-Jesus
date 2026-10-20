@@ -2,7 +2,7 @@
 
 Projeto de estudos desenvolvido durante a graduação em Ciência da Computação na FIAP, com foco na prática de **Programação Orientada a Objetos (POO) em Java**.
 
-O projeto evolui aula após aula, aplicando conceitos teóricos em classes, objetos, métodos, relacionamentos e regras de negócio.
+O projeto evolui aula após aula, aplicando conceitos teóricos em classes, objetos, métodos, relacionamentos, herança, polimorfismo e regras de negócio.
 
 ## Objetivos
 
@@ -12,6 +12,7 @@ O projeto evolui aula após aula, aplicando conceitos teóricos em classes, obje
 - Implementar métodos com regras de negócio e validações.
 - Trabalhar com herança e reutilização de código.
 - Aplicar polimorfismo por sobrescrita de métodos.
+- Utilizar classes abstratas e métodos abstratos.
 - Praticar modelagem UML com diagramas de classes no Astah.
 - Desenvolver boas práticas de organização e legibilidade do código.
 
@@ -19,13 +20,13 @@ O projeto evolui aula após aula, aplicando conceitos teóricos em classes, obje
 
 ### 1. Classes e objetos
 
-A classe `Livro` representa um livro e reúne informações como título, quantidade de páginas, gênero literário e autor.
+A classe `Livro` reúne características comuns aos livros, como título, quantidade de páginas, gênero literário e autor.
 
-No `SistemaPrincipal`, são criados objetos de diferentes tipos para demonstrar o funcionamento das classes.
+A classe `Autor` representa o autor associado ao livro. No projeto, diferentes classes de teste permitem experimentar a criação e o funcionamento dos objetos.
 
 ### 2. Métodos e regras de negócio
 
-A classe `Livro` possui métodos que permitem alterar a quantidade de páginas:
+A classe `Livro` possui métodos para alterar a quantidade de páginas:
 
 - `adicionarPaginas(int quantidade)`: adiciona páginas quando a quantidade informada é válida.
 - `removerPaginas(int quantidade)`: remove páginas quando a quantidade é válida e o livro possui páginas suficientes.
@@ -36,11 +37,13 @@ Esses métodos aplicam validações para impedir operações inválidas.
 
 Os atributos são declarados como `private`, restringindo o acesso direto a eles.
 
-Métodos de acesso, como getters, permitem consultar informações do objeto. Os setters são utilizados internamente quando necessário para definir ou atualizar valores.
+Métodos de acesso, como getters, permitem consultar as informações dos objetos. Os setters privados são utilizados internamente para definir os valores dos atributos.
 
 ### 4. Construtores
 
-Os construtores inicializam os objetos com as informações necessárias, utilizando `super(...)` nas classes filhas para inicializar a parte herdada de `Livro`.
+Os construtores inicializam os objetos com as informações necessárias.
+
+Nas classes filhas, a chamada `super(...)` invoca o construtor da classe mãe para inicializar os atributos herdados de `Livro`.
 
 ### 5. Herança
 
@@ -49,19 +52,49 @@ O projeto utiliza `Livro` como classe mãe de duas classes especializadas:
 - `Ebook`: representa um livro digital e possui o atributo `tamanhoArquivoMB`.
 - `LivroFisico`: representa um livro físico e possui o atributo `pesoGramas`.
 
-As duas classes herdam os atributos e comportamentos comuns de `Livro`, além de manterem suas próprias características.
+As duas subclasses herdam os atributos e comportamentos comuns de `Livro` e mantêm suas próprias características específicas.
 
-### 6. Polimorfismo por sobrescrita
+### 6. Classes abstratas e métodos abstratos
 
-A classe `Livro` define o método:
+Na Aula 8, a classe `Livro` foi transformada em uma classe abstrata utilizando a palavra-chave `abstract`.
 
-`exibirDetalhes(): String`
+Essa alteração impede a criação direta de objetos da classe `Livro`, que passa a representar uma estrutura comum para suas subclasses. Ela continua podendo ser utilizada como tipo de referência.
 
-As classes `Ebook` e `LivroFisico` sobrescrevem esse método utilizando a anotação `@Override`.
+A classe declara o método abstrato `getTipo(): String`, que estabelece um comportamento obrigatório para as classes concretas que herdam de `Livro`.
 
-A implementação de `Ebook` acrescenta o tamanho do arquivo, enquanto a de `LivroFisico` acrescenta o peso do livro. Ambas reutilizam os detalhes comuns por meio de `super.exibirDetalhes()`.
+As implementações são:
 
-No `SistemaPrincipal`, os dois tipos de objeto são armazenados em uma `List<Livro>` e percorridos por um laço `for`. A chamada ao mesmo método executa a implementação correspondente ao objeto.
+- `Ebook`: retorna `"E-book"`.
+- `LivroFisico`: retorna `"Livro físico"`.
+
+Cada subclasse fornece sua própria implementação do método abstrato.
+
+### 7. Polimorfismo por sobrescrita
+
+A classe `Livro` define o método concreto `exibirDetalhes(): String`, responsável por reunir as informações comuns do livro.
+
+As classes `Ebook` e `LivroFisico` sobrescrevem esse método utilizando a anotação `@Override` e a chamada `super.exibirDetalhes()` para reutilizar as informações da classe mãe.
+
+A implementação de `Ebook` acrescenta o tamanho do arquivo, enquanto a de `LivroFisico` acrescenta o peso do livro.
+
+O método `getTipo()` também é sobrescrito pelas subclasses, retornando a categoria correspondente a cada objeto.
+
+No `SistemaPrincipal`, os objetos são armazenados em uma `List<Livro>` e percorridos por um laço `for`. A chamada aos métodos demonstra o polimorfismo, pois o comportamento executado depende do tipo concreto do objeto.
+
+### 8. Classes de teste
+
+O projeto possui classes destinadas a executar e verificar diferentes partes da implementação:
+
+- `TesteMeuLivro`: classe de teste relacionada a livros.
+- `TesteAutor`: classe de teste relacionada a autores.
+- `TesteBiblioteca`: classe de teste relacionada à biblioteca.
+- `SistemaPrincipal`: classe principal utilizada para executar a demonstração atual com e-books e livros físicos.
+
+### 9. Modelagem UML
+
+O projeto utiliza diagramas de classes desenvolvidos no Astah para representar a estrutura das classes e seus relacionamentos.
+
+A modelagem contempla a classe abstrata `Livro`, suas subclasses `Ebook` e `LivroFisico`, os atributos, os métodos e as relações de herança.
 
 ## Estrutura do projeto
 
@@ -72,6 +105,9 @@ FiapRideEstudos/
         └── com/
             └── fiapride/
                 ├── main/
+                │   ├── TesteMeuLivro.java
+                │   ├── TesteAutor.java
+                │   ├── TesteBiblioteca.java
                 │   └── SistemaPrincipal.java
                 └── model/
                     ├── Autor.java
@@ -90,15 +126,17 @@ FiapRideEstudos/
 ## Como executar
 
 1. Abra o projeto no Eclipse.
-2. Localize a classe `SistemaPrincipal.java` no pacote `br.com.fiapride.main`.
+2. Localize a classe `SistemaPrincipal.java`, no pacote `br.com.fiapride.main`.
 3. Execute o método `main`.
 4. Observe no console os detalhes dos objetos `Ebook` e `LivroFisico`, incluindo suas informações específicas.
 
+As classes `TesteMeuLivro`, `TesteAutor` e `TesteBiblioteca` também podem ser executadas individualmente caso possuam um método `main`.
+
 ## Aprendizados
 
-Este projeto é desenvolvido de forma incremental para consolidar os fundamentos de POO, praticar a implementação de soluções em Java e manter o código alinhado à modelagem UML.
+O projeto é desenvolvido de forma incremental para consolidar os fundamentos de Programação Orientada a Objetos e aplicar os conceitos estudados nas aulas da FIAP.
 
-Cada evolução busca reforçar a organização, a reutilização de código, a proteção do estado dos objetos e a aplicação dos conceitos estudados nas aulas.
+As implementações praticam encapsulamento, construtores, validações, herança, classes abstratas, métodos abstratos, sobrescrita e polimorfismo, mantendo o código organizado e alinhado à modelagem UML.
 
 ---
 
