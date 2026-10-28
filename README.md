@@ -211,9 +211,8 @@ Outra decisão que eu reavaliaria seria a utilização da classe `Autor`. Inicia
 
 
 
-```markdown
 ![Diagrama de classes do FiapRideEstudos](docs/diagrama-classes.png)
-```
+
 
 ---
 
@@ -266,6 +265,5 @@ Para testar funcionalidades específicas, execute individualmente `TesteAutor`, 
 
 ##
 
----
 
 Projeto pessoal de estudos — Ciência da Computação | FIAP.
