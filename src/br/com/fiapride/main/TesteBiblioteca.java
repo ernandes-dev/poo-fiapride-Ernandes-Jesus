@@ -1,7 +1,7 @@
 package br.com.fiapride.main;
 
 import br.com.fiapride.model.Biblioteca;
-import br.com.fiapride.model.Livro;
+import br.com.fiapride.model.LivroFisico;
 import br.com.fiapride.model.Autor;
 
 public class TesteBiblioteca {
@@ -10,7 +10,8 @@ public class TesteBiblioteca {
     	
     	Autor autor1 = new Autor("J. R. R. Tolkien", "Fantasia", 20);
     	
-    	Livro livro1 = new Livro("O Hobbit", 310, "Fantasia", autor1);
+    	
+    	LivroFisico livro1 = new LivroFisico(500, "O Hobbit", 310, "Fantasia", autor1);
 
     	Biblioteca biblioteca1 = new Biblioteca("Biblioteca FIAP", livro1);
 

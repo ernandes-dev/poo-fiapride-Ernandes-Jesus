@@ -4,9 +4,7 @@ public class Ebook extends Livro {
 
     private double tamanhoArquivoMB;
 
-    public Ebook(double tamanhoArquivoMB, String titulo,
-            int quantidadeDePaginas, String generoLiterario, Autor autor) {
-
+    public Ebook(double tamanhoArquivoMB, String titulo, int quantidadeDePaginas, String generoLiterario, Autor autor) {
         super(titulo, quantidadeDePaginas, generoLiterario, autor);
         this.setTamanhoArquivoMB(tamanhoArquivoMB);
     }
@@ -16,6 +14,9 @@ public class Ebook extends Livro {
     }
 
     private void setTamanhoArquivoMB(double tamanhoArquivoMB) {
+        if (tamanhoArquivoMB <= 0 || Double.isNaN(tamanhoArquivoMB) || Double.isInfinite(tamanhoArquivoMB)) {
+            throw new IllegalArgumentException("Erro: O tamanho do arquivo em MB deve ser um valor positivo e finito.");
+        }
         this.tamanhoArquivoMB = tamanhoArquivoMB;
     }
 

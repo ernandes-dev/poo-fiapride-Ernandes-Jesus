@@ -4,9 +4,7 @@ public class LivroFisico extends Livro {
 
     private double pesoGramas;
 
-    public LivroFisico(double pesoGramas, String titulo,
-            int quantidadeDePaginas, String generoLiterario, Autor autor) {
-
+    public LivroFisico(double pesoGramas, String titulo, int quantidadeDePaginas, String generoLiterario, Autor autor) {
         super(titulo, quantidadeDePaginas, generoLiterario, autor);
         this.setPesoGramas(pesoGramas);
     }
@@ -16,6 +14,9 @@ public class LivroFisico extends Livro {
     }
 
     private void setPesoGramas(double pesoGramas) {
+        if (pesoGramas <= 0 || Double.isNaN(pesoGramas) || Double.isInfinite(pesoGramas)) {
+            throw new IllegalArgumentException("Erro: O peso em gramas deve ser um valor positivo e finito.");
+        }
         this.pesoGramas = pesoGramas;
     }
 

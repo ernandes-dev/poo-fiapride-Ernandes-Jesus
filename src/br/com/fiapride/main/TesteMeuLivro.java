@@ -1,7 +1,8 @@
 package br.com.fiapride.main;
 
 import br.com.fiapride.model.Autor;
-import br.com.fiapride.model.Livro;
+import br.com.fiapride.model.LivroFisico;
+import br.com.fiapride.model.Ebook;
 
 public class TesteMeuLivro {
 
@@ -13,14 +14,16 @@ public class TesteMeuLivro {
                 20
         );
 
-        Livro livro1 = new Livro(
+        LivroFisico livro1 = new LivroFisico(
+                500,
                 "O Hobbit",
                 310,
                 "Fantasia",
                 autor1
         );
 
-        Livro livro2 = new Livro(
+        Ebook livro2 = new Ebook(
+                80,
                 "Scythe",
                 448,
                 "Ficção Científica",
