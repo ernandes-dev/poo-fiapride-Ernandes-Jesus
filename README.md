@@ -3,7 +3,7 @@
 ## Informações do Aluno
 
 - **Nome:** Ernandes Da Silva Jesus
-- **RM:** [Preencher com seu RM]
+- **RM:** 566611
 - **Turma:** CCPB
 - **Curso:** Ciência da Computação
 - **GitHub:** [@ernandes-dev](https://github.com/ernandes-dev)
